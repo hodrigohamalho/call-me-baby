@@ -4,6 +4,7 @@
   "description": "Simulate request in an environment",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rodrigo Ramalho",
