@@ -5,8 +5,9 @@ var paths = ['health', 'server-info', 'hello'];
 var keys = ['04e03a6eb5eefa886b9d8ea526f6e2f2', 
             '91de66ed27dde17732a45cb94501ef9a', 
             '9cf24730bedd3ba8b7935d406cd8bd4e', 
-            '04e03a6eb5eefa886b9d8ea526f6e2f2'];
-  
+            '92e7b36bd5b49322dd1d6a65eb78e5c4'];
+
+
 var x = function(_url, _options){
     http.get(_url, _options, (resp) => {
         console.log(`${resp.statusCode} - ${_url} - user-key: ${_options.headers['user-key']} `);
