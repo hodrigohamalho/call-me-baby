@@ -1,16 +1,13 @@
 const http = require('https');
 
-var host = 'https://api-2445581589199.staging.gw.apicast.io';
-var paths = ['health', 'server-info', 'hello'];
-var keys = ['04e03a6eb5eefa886b9d8ea526f6e2f2', 
-            '91de66ed27dde17732a45cb94501ef9a', 
-            '9cf24730bedd3ba8b7935d406cd8bd4e', 
-            '92e7b36bd5b49322dd1d6a65eb78e5c4'];
+var host = 'https://open-banking-3scale-apicast-production.apps.cluster-27d6.27d6.sandbox1865.opentlc.com/public';
+var paths = ['banks', 'banks/deutsche-bank-werl', 'banks/deutsche-bank-werl/atms', 'banks/deutsche-bank-werl/products','banks/deutsche-bank-werl/branches'];
+var keys = ['8df307092ac9b717c5328401466d1748','0dc2bd78fb2303e13c094854105b3b51'];
 
 
 var x = function(_url, _options){
     http.get(_url, _options, (resp) => {
-        console.log(`${resp.statusCode} - ${_url} - user-key: ${_options.headers['user-key']} `);
+        console.log(`${resp.statusCode} - ${_url}`);
 
         var req = generateRequest();
         x(req.url, req.options);
@@ -20,17 +17,16 @@ var x = function(_url, _options){
 var generateRequest = function(){
     var path = paths[Math.floor(Math.random()*paths.length)];
     var key = keys[Math.floor(Math.random()*keys.length)];
-    var url = host+'/'+path;
+    var url = host+'/'+path+"?user_key="+key;
     console.log(url);
 
     var options = {
-        'headers': {
-            'user-key': key
-        }
+        // 'headers': {
+        //     'user-key': key
+        // }
     }
 
     return {'url': url, 'options': options};
-
 }
 
 var req = generateRequest();
